@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Registration Complete</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h4>{{ no_users }} users is successfully registered. See the list below.</h4>
+         {% if export %}
+            <a href="{% url 'export-csv' %}">Export CSV</a>
+        {% endif %}
+        <table class="table">
+            <tr>
+                <th>Email</th>
+                <th>name</th>
+                <th>Password (auto-generated)</th>
+            </tr>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.password }}</td>
+                </tr>
+             {% endfor %}
+        </table>
+    </div>
+{% endblock %}

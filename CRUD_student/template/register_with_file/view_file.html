@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>View File</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1> Your File is here: </h1>
+        <a href="{% url 'registration-complete' %}">Register the Users</a> |
+        {% if export %}
+            <a href="{% url 'export-csv' %}">Export CSV</a>
+        {% endif %}
+
+        <br>
+        <table class="table">
+            <tr>
+                <th>Email</th>
+                <th>name</th>
+            </tr>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                </tr>
+             {% endfor %}
+        </table>
+    </div>
+{% endblock %}

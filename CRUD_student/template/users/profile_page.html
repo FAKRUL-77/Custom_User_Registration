@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    profile page
+{% endblock %}
+
+{% block content %}
+    <div class="container card">
+        <div class="card-body">
+            {% if user.is_admin == True %}
+                {{ user.email }}
+            {% elif user.is_student == True %}
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <td>: {{ user.student.std_name }}</td>
+                    </tr>
+                    <tr>
+                        <th>ID</th>
+                        <td>: {{ user.student.std_id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Contact No</th>
+                        <td>: {{ user.student.contact }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date Of Birth</th>
+                        <td>: {{ user.student.date_of_birth }}</td>
+                    </tr>
+                    <tr>
+                        <th>Blood Group</th>
+                        <td>: {{ user.student.blood_group }}</td>
+                    </tr>
+                    <tr>
+                        <th>Gender</th>
+                        <td>: {{ user.student.gender }}</td>
+                    </tr>
+                    <tr>
+                        <th>Religion</th>
+                        <td>: {{ user.student.religion }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nationality</th>
+                        <td>: {{ user.student.nationality }}</td>
+                    </tr>
+                </table>
+                <br>
+                <div class="container">
+                    <button><a href="{% url 'updateStudent' user.pk %}">Update</a></button>
+                    <button><a href="{% url 'password_change' user.pk %}">Change Password</a></button>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

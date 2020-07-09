@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2>This is home page !!</h2>
+        {% if user.is_admin == True %}
+            <h2>{{ user.email }}</h2>
+            <h2>Admin Type User's Home Page !!</h2>
+        {% elif user.is_student == True%}
+            <h2>This is Student Home Page</h2>
+        {% endif %}
+    </div>
+{% endblock %}
