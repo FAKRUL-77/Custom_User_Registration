@@ -140,7 +140,7 @@ LOGIN_REDIRECT_URL = 'home'
 
 
 HOST_USER = 'mdfakhrul286@gmail.com'
-HOST_PASSWORD = '#171151316@gmail.com#'
+HOST_PASSWORD = '***************'
 
 # Sent Email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
